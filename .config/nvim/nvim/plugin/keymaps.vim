@@ -106,3 +106,4 @@ if !exists('g:vscode')
 endif
 " NvimTree
 map <C-f> :NvimTreeToggle<CR>
+nnoremap <leader>gs :Git<CR>
