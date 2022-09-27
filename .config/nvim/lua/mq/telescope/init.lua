@@ -4,7 +4,7 @@ local reloader = function()
 	if SHOULD_RELOAD_TELESCOPE then
 		RELOAD("plenary")
 		RELOAD("telescope")
-		RELOAD("alpha.telescope.setup")
+		RELOAD("mq.telescope.setup")
 	end
 end
 
@@ -40,7 +40,7 @@ function M.search_config()
 end
 
 function M.grep_string()
-	vim.ui.input("Grep for > ", function(input)
+	vim.ui.input({ prompt = "Grep for > " }, function(input)
 		if input == nil then
 			return
 		end

@@ -1,6 +1,6 @@
 pcall(require, "impatient")
 
-if require "alpha.first_load"() then
+if require "mq.first_load"() then
   return
 end
 
@@ -8,15 +8,15 @@ vim.g.mapleader = " "
 
 vim.g.snippets = "luasnip"
 
-require "alpha.globals"
+require "mq.globals"
 
-require "alpha.disable_builtin"
+require "mq.disable_builtin"
 
-require "alpha.plugins"
+require "mq.plugins"
 
-require "alpha.telescope.setup"
-require "alpha.telescope.mappings"
-require "alpha.dap"
+require "mq.telescope.setup"
+require "mq.telescope.mappings"
+require "mq.dap"
 
--- require "alpha.refactor"
-require "alpha.lsp"
+-- require "mq.refactor"
+require "mq.lsp"

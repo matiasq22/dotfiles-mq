@@ -1,15 +1,15 @@
 local ok, cmp = pcall(require, "cmp")
 if not ok then
-  return
+    return
 end
 
-local lspkind = require "lspkind"
-local luasnip = require "luasnip"
-local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+local lspkind = require("lspkind")
+local luasnip = require("luasnip")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
-cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 
-cmp.setup {
+cmp.setup({
     mapping = {
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -32,13 +32,14 @@ cmp.setup {
             end
         end, { "i", "s" }),
         ["<S-tab>"] = cmp.mapping.select_prev_item(),
-        ["<enter>"] = cmp.mapping.confirm {
+        ["<enter>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,
-        },
+        }),
         ["<c-space>"] = cmp.mapping.complete(),
     },
     sources = {
+        { name = "cmp_tabnine" },
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "path" },
@@ -53,8 +54,8 @@ cmp.setup {
                         bufs[vim.api.nvim_win_get_buf(win)] = true
                     end
                     return vim.tbl_keys(bufs)
-                end
-            }
+                end,
+            },
         },
     },
 
@@ -65,7 +66,7 @@ cmp.setup {
     },
 
     formatting = {
-        format = lspkind.cmp_format {
+        format = lspkind.cmp_format({
             with_text = true,
             menu = {
                 buffer = "[buf]",
@@ -74,33 +75,30 @@ cmp.setup {
                 path = "[path]",
                 luasnip = "[snip]",
                 ["vim-dadbod-completion"] = "[DB]",
-            }
-        }
+            },
+        }),
     },
 
     experimental = {
         native_menu = false,
 
         ghost_text = true,
-    }
-}
+    },
+})
 
-vim.api.nvim_create_autocmd(
-    "FileType",
-    {
-        pattern = "sql,mysql,plsql",
-        callback = function()
-            require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })
-        end
-    }
-)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "sql,mysql,plsql",
+    callback = function()
+        require("cmp").setup.buffer({ sources = { { name = "vim-dadbod-completion" } } })
+    end,
+})
 
 -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['emmet_ls'].setup {
-    capabilities = capabilities
-  }
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+require("lspconfig")["emmet_ls"].setup({
+    capabilities = capabilities,
+})
 
 local Group = require("colorbuddy.group").Group
 local g = require("colorbuddy.group").groups

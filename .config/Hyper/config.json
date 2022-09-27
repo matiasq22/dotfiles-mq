@@ -1,0 +1,15 @@
+{
+	"fontFamily": "Nerdfonts",
+	"windowPosition": [
+		1920,
+		24
+	],
+	"windowSize": [
+		1920,
+		1056
+	],
+	"hyper": {
+		"plugins": "{\"plugins\":[],\"localPlugins\":[]}",
+		"plugin-versions": "[]"
+	}
+}

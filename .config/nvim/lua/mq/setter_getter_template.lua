@@ -1,4 +1,4 @@
-local utils = require("alpha.utils")
+local utils = require("mq.utils")
 
 local M = {}
 

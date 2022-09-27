@@ -4,7 +4,7 @@ if not ok then
     return
 end
 
-local my_sources = require("alpha.php_code_actions")
+local my_sources = require("mq.php_code_actions")
 
 local sources = {
     null_ls.builtins.code_actions.gitsigns,

@@ -92,7 +92,7 @@ local function jump_to_location(bufnr, line, column)
 	end
 end
 
-dap.listeners.after["event_stopped"]["alpha"] = function(session, body)
+dap.listeners.after["event_stopped"]["mq"] = function(session, body)
 	if body.reason ~= "breakpoint" then
 		return
 	end
@@ -110,13 +110,13 @@ end
 
 vim.keymap.set("n", "<leader>dbp", require("dap").toggle_breakpoint, { noremap = true })
 vim.keymap.set("n", "<leader>dd", require("dap").continue, { noremap = true })
-vim.keymap.set("n", "<leader>de", require("alpha.dap-fn").stop, { noremap = true })
+vim.keymap.set("n", "<leader>de", require("mq.dap-fn").stop, { noremap = true })
 vim.keymap.set("n", "<leader>dl", require("dap").step_into, { noremap = true })
 vim.keymap.set("n", "<leader>dj", require("dap").step_over, { noremap = true })
 vim.keymap.set("n", "<leader>dk", require("dap").step_out, { noremap = true })
 vim.keymap.set("n", "<leader>dt", require("dap").repl.toggle, { noremap = true })
-vim.keymap.set("n", "<leader>ds", require("alpha.dap-fn").scopes, { noremap = true })
-vim.keymap.set("n", "<leader>da", require("alpha.dap-fn").fullscopes, { noremap = true })
+vim.keymap.set("n", "<leader>ds", require("mq.dap-fn").scopes, { noremap = true })
+vim.keymap.set("n", "<leader>da", require("mq.dap-fn").fullscopes, { noremap = true })
 vim.keymap.set("n", "<leader>dbl", require("dap").list_breakpoints, { noremap = true })
 vim.keymap.set("n", "<leader>dbc", require("dap").clear_breakpoints, { noremap = true })
 vim.keymap.set("n", "<leader>dc", require("dap").run_to_cursor, { noremap = true })

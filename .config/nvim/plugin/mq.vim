@@ -1,5 +1,5 @@
-if !exists('*alpha#save_and_exec')
-  function! alpha#save_and_exec() abort
+if !exists('*mq#save_and_exec')
+  function! mq#save_and_exec() abort
     if &filetype == 'vim'
       :silent! write
       :source %

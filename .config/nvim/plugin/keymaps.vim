@@ -68,7 +68,7 @@ if has('nvim')
     tnoremap <C-Space> <Space>
 endif
 
-nnoremap <leader><leader>x :call alpha#save_and_exec()<cr>
+nnoremap <leader><leader>x :call mq#save_and_exec()<cr>
 
 nnoremap <leader>cc :cclose<CR>
 
