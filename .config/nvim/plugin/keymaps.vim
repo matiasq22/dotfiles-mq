@@ -107,3 +107,5 @@ endif
 " NvimTree
 map <C-f> :NvimTreeToggle<CR>
 nnoremap <leader>gs :Git<CR>
+
+nnoremap <C-a> ggVG
