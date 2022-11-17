@@ -23,12 +23,12 @@ require("telescope").setup({
 			width = 0.95,
 			height = 0.85,
 			-- preview_cutoff = 120,
-			prompt_position = "top",
+			prompt_position = "bottom",
 
 			horizontal = {
 				preview_width = function(_, cols, _)
 					if cols > 200 then
-						return math.floor(cols * 0.4)
+						return math.floor(cols * 0.5)
 					else
 						return math.floor(cols * 0.6)
 					end
@@ -75,17 +75,17 @@ require("telescope").setup({
 				["<C-k>"] = actions.cycle_history_next,
 				["<C-j>"] = actions.cycle_history_prev,
 
-				["<c-space>"] = function(prompt_bufnr)
-					local opts = {
-						callback = actions.toggle_selection,
-						loop_callback = actions.send_selected_to_qflist,
-					}
-					require("telescope").extensions.hop._hop_loop(prompt_bufnr, opts)
-				end,
+				-- ["<c-space>"] = function(prompt_bufnr)
+				-- 	local opts = {
+				-- 		callback = actions.toggle_selection,
+				-- 		loop_callback = actions.send_selected_to_qflist,
+				-- 	}
+				-- 	require("telescope").extensions.hop._hop_loop(prompt_bufnr, opts)
+				-- end,
 
-				["<C-w>"] = function()
-					vim.api.nvim_input("<c-s-w>")
-				end,
+				-- ["<C-w>"] = function()
+				-- 	vim.api.nvim_input("<c-s-w>")
+				-- end,
 			},
 		},
 
@@ -153,7 +153,7 @@ require("telescope").setup({
 		},
 
 		["ui-select"] = {
-			require("telescope.themes").get_dropdown({
+			require("telescope.themes").get_cursor({
 				-- even more opts
 			}),
 		},
@@ -162,6 +162,7 @@ require("telescope").setup({
 _ = require("telescope").load_extension("dap")
 _ = require("telescope").load_extension("notify")
 _ = require("telescope").load_extension("file_browser")
+-- makes the selection like lsp code actions in telescope
 _ = require("telescope").load_extension("ui-select")
 _ = require("telescope").load_extension("fzf")
 _ = require("telescope").load_extension("git_worktree")

@@ -193,9 +193,13 @@ return require("packer").startup(function(use)
 
     use({ "hkupty/iron.nvim" })
 
-    -- Local plugins can be included
-    local_use("telescope-projectionist.nvim")
-    local_use("telescope-laravel.nvim")
+	-- Local plugins can be included
+	local_use("telescope-projectionist.nvim")
+	-- local_use("telescope-laravel.nvim")
+	local_use("php-code-actions.nvim")
+	local_use("laravel.nvim")
+	local_use("composer.nvim")
+	local_use("neotest-phpunit")
 
     use({ "habamax/vim-godot" })
 
@@ -221,4 +225,41 @@ return require("packer").startup(function(use)
     use("lukas-reineke/lsp-format.nvim")
     use("prettier/vim-prettier")
     use("akinsho/git-conflict.nvim")
+    use({
+        "adalessa/laravel.nvim",
+        requires = {
+            { "nvim-lua/plenary.nvim" },
+            { "rcarriga/nvim-notify" },
+            { "nvim-telescope/telescope.nvim" },
+        },
+    })
+
+	use("vim-test/vim-test")
+	use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-neotest/neotest-go",
+			"rouge8/neotest-rust",
+			"nvim-neotest/neotest-plenary",
+			"nvim-neotest/neotest-vim-test",
+			-- "olimorris/neotest-phpunit",
+		},
+	})
+
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
+	})
+
+	use({
+		"anuvyklack/hydra.nvim",
+		requires = "anuvyklack/keymap-layer.nvim", -- needed only for pink hydras
+	})
+
+	use({ "xiyaowong/nvim-transparent" })
 end)
