@@ -1,5 +1,4 @@
 {
-	"fontFamily": "Nerdfonts",
 	"windowPosition": [
 		1920,
 		24
@@ -9,7 +8,7 @@
 		1056
 	],
 	"hyper": {
-		"plugins": "{\"plugins\":[],\"localPlugins\":[]}",
-		"plugin-versions": "[]"
+		"plugins": "{\"plugins\":[\"hyper-material-theme\",\"font-ligatures\"],\"localPlugins\":[]}",
+		"plugin-versions": "[[\"hyper-material-theme\",\"3.0.1\"],[\"font-ligatures\",\"1.4.1\"]]"
 	}
 }
