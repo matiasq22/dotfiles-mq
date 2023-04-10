@@ -7,7 +7,7 @@ fun! ColorMyPencils()
     endif
 
     set background=dark
-    colorscheme nightfox
+    colorscheme catppuccin-mocha
 
     " Transparency
     "highlight Normal ctermbg=NONE guibg=NONE

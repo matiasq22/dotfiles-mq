@@ -49,7 +49,7 @@ lsp_installer.on_server_ready(function(server)
 
     -- (optional) Customize the options passed to the server
     if server.name == "emmet_ls" then
-        opts.filetypes = { "html", "css", "blade", "typescriptreact", "php" }
+        opts.filetypes = { "html", "css", "blade", "typescriptreact", "php", "javascript", "typescript" }
     end
 
     opts.on_attach = on_attach
@@ -99,3 +99,27 @@ function range_formatting(options, start_pos, end_pos)
 end
 
 vim.lsp.buf.range_formatting = range_formatting
+
+-- require('lspconfig').sumneko_lua.setup {
+--     on_attach = on_attach,
+--     settings ={
+--         Lua = {
+--         diagnostics = {
+--                 globals = { 'vim' },
+--             },
+--         workspace = {
+--                 library = vim.api.nvim_get_runtime_file("", true),
+--                 checktThirdParty = false
+--             },
+--         } ,
+--     },
+-- }
+
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- require('lspconfig').tsserver.setup {
+--     on_attach = on_attach,
+--     filetypes = {"typescript", "typescriptreact", "typescript.tsx", "javascript.jsx"},
+--     cmd = {"typescript-language-server", "--stdio"},
+--     capabilities = capabilities
+-- }
