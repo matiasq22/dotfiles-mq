@@ -6,7 +6,7 @@ local action_set = require("telescope.actions.set")
 local get_node_text = vim.treesitter.get_node_text
 
 local function getElements()
-    vim.treesitter.set_query(
+    vim.treesitter.query.set(
         "yaml",
         "GraphQL_endpoints",
         [[
@@ -26,7 +26,7 @@ local function getElements()
         ]]
     )
 
-    local query = vim.treesitter.get_query("yaml", "GraphQL_endpoints")
+    local query = vim.treesitter.query.get("yaml", "GraphQL_endpoints")
 
     local elements = {}
 

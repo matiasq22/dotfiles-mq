@@ -12,7 +12,7 @@ local function tableConcat(t1,t2)
     return t1
 end
 
-vim.treesitter.set_query(
+vim.treesitter.query.set(
 	"php",
 	"mq_refactor_property",
 	[[
@@ -30,7 +30,7 @@ vim.treesitter.set_query(
 ]]
 )
 
-vim.treesitter.set_query(
+vim.treesitter.query.set(
     "phpdoc",
     "mq_refactor_property_phpdoc",
     [[
@@ -68,7 +68,7 @@ M.php_setter_getter_actions = {
 						local property_name
 						local property_types = {}
                         local nullable = false
-						local query = vim.treesitter.get_query("php", "mq_refactor_property")
+						local query = vim.treesitter.query.get("php", "mq_refactor_property")
 						for _, match in query:iter_matches(property_node, 0) do
 							for id, subNode in pairs(match) do
 								local capture_name = query.captures[id]
@@ -84,7 +84,7 @@ M.php_setter_getter_actions = {
                         -- P(comment_node:type())
                         local row, column = comment_node:start()
                         local test_node = ts_utils.get_root_for_position(row, column)
-						local comment_query = vim.treesitter.get_query("phpdoc", "mq_refactor_property_phpdoc")
+						local comment_query = vim.treesitter.query.get("phpdoc", "mq_refactor_property_phpdoc")
 						for _, match in comment_query:iter_matches(test_node, 0) do
 							for _, subNode in pairs(match) do
                                 local type = get_node_text(subNode, 0)

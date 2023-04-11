@@ -50,7 +50,7 @@ end
 
 --- @param bufnr integer Buff id
 gateway.get_graphql_definitions = function (bufnr)
-    vim.treesitter.set_query(
+    vim.treesitter.query.set(
         "yaml",
         "GraphQL_endpoints",
         [[
@@ -70,7 +70,7 @@ gateway.get_graphql_definitions = function (bufnr)
         ]]
     )
 
-    local query = vim.treesitter.get_query("yaml", "GraphQL_endpoints")
+    local query = vim.treesitter.query.get("yaml", "GraphQL_endpoints")
 
     local elements = {}
 
