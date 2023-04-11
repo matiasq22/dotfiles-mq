@@ -1,0 +1,7 @@
+### configuration file for openfortivpn, see man openfortivpn(1) ###
+
+host = 190.128.226.122
+port = 10443
+username = matias12
+password = m$2fRtfc$%&MaT
+trusted-cert = cdd80af6a5eed98e37d6d16bea2e7b4483b8e86d89d5ddffdcd0b29c31648a4c

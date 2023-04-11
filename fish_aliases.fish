@@ -1,8 +1,8 @@
 alias ssh-antell="ssh -oHostKeyAlgorithms=+ssh-dss root@192.168.2.65"
 alias vpn-antell2="sudo pon antell_tunnel_personal"
 alias vpn-antell2-down="sudo poff antell_tunnel_personal"
-alias vpn-antell="sudo pon antell_tunnel"
-alias vpn-antell-down="sudo poff antell_tunnel"
+alias vpn-antell="sudo openfortivpn &"
+alias vpn-antell-down="sudo killall pppd"
 alias pupdate="sudo pacman -Syu"
 alias pr="sudo pacman -R"
 alias pi="sudo pacman -S"
@@ -24,10 +24,14 @@ alias dcdw="docker-compose down"
 alias dcrt="docker-compose restart"
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
-alias k=kubecolor
+alias k=kubectl
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+
+#k3d completions
+source /home/mq/.k3d-completion.fish
 
 
-# migrating from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh 
+# migrating from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh
 alias gdf="git diff"
 alias gph="git push origin"
 alias gpl="git pull origin"
@@ -105,7 +109,7 @@ alias glo='git log --oneline'
 alias gss='git status -s'
 #compdef _git gss=git-status
 alias ga='git add'
-alias gac='git add . && git commit -m' 
+alias gac='git add . && git commit -m'
 #compdef _git ga=git-add
 alias gm='git merge'
 #compdef _git gm=git-merge
