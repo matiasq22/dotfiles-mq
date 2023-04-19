@@ -1,9 +1,9 @@
 local map = vim.keymap.set
 
 map("v", "<leader>p", function()
-  local val = vim.fn.getreg '"'
-  vim.api.nvim_command [[normal! p]]
-  vim.fn.setreg('"', val)
+	local val = vim.fn.getreg('"')
+	vim.api.nvim_command([[normal! p]])
+	vim.fn.setreg('"', val)
 end, { desc = "Special paste, paste without replacing copy register content" })
 
 map("n", "<C-b>", ":bd!<CR>", { desc = "Deletes the current buffer" })
@@ -22,7 +22,12 @@ map("v", ">", ">gv", { desc = "Indent in and keeps the selection" })
 -- symbols to add undo points
 local symbols = { ",", ".", "!", "?", "$", ">", "<" }
 for _, symbol in pairs(symbols) do
-  map("i", symbol, symbol .. "<c-g>u", { desc = string.format("Add symbol %s to the undo list and writes it", symbol) })
+	map(
+		"i",
+		symbol,
+		symbol .. "<c-g>u",
+		{ desc = string.format("Add symbol %s to the undo list and writes it", symbol) }
+	)
 end
 
 -- search result focus
@@ -47,14 +52,18 @@ map("n", "<leader>vp", vim.diagnostic.goto_prev, { desc = "Goes to prev diagnost
 
 map("n", "<C-s>", ":w<CR>")
 
-
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h")
-map("n" , "<C-j>", "<C-w>j")
-map("n" , "<C-k>", "<C-w>k")
-map("n" , "<C-l>", "<C-w>l")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
 
-map("n", "<C-a>", "ggVG", {silent = true, desc = "select all lines in the current buffer"})
+map("n", "<C-a>", "ggVG", { silent = true, desc = "select all lines in the current buffer" })
 
 -- Remap escape
 map("i", "jk", "<Esc>")
+
+-- Buffer navigation
+map("n", "<TAB>", ":bnext<CR>")
+map("n", "<S-TAB>", ":bprevious<CR>")
+-- map("n", "<leader>gs", ":Git<CR>");

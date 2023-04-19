@@ -1,23 +1,57 @@
 return {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
+  "neovim/nvim-lspconfig",
   dependencies = {
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {                                      -- Optional
-      'williamboman/mason.nvim',
-      build = function()
-        pcall(vim.cmd, 'MasonUpdate')
+    {
+      "jose-elias-alvarez/null-ls.nvim",
+      dependencies = {
+        "adalessa/php-code-actions.nvim",
+      },
+    },
+    {
+      "williamboman/mason.nvim",
+      opts = {
+        ui = {
+          border = "rounded",
+        },
+      },
+    },
+    "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    {
+      "lvimuser/lsp-inlayhints.nvim",
+      config = function()
+        require("lsp-inlayhints").setup()
+        vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+        vim.api.nvim_create_autocmd("LspAttach", {
+          group = "LspAttach_inlayhints",
+          callback = function(args)
+            if not (args.data and args.data.client_id) then
+              return
+            end
+
+            local bufnr = args.buf
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            require("lsp-inlayhints").on_attach(client, bufnr, false)
+          end,
+        })
       end,
     },
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},     -- Required
-    {'hrsh7th/cmp-nvim-lsp'}, -- Required
-    {'L3MON4D3/LuaSnip'},     -- Required
+    {
+      "j-hui/fidget.nvim",
+      opts = {
+        window = {
+          blend = 0,
+        },
+        sources = {
+          ["null-ls"] = {
+            ignore = true,
+          },
+        },
+      },
+    },
   },
-    config = function()
-     require("mq.lsp.setup")
-    end,
+  event = "VeryLazy",
+  config = function()
+    require "mq.lsp"
+  end,
 }
