@@ -66,4 +66,3 @@ map("i", "jk", "<Esc>")
 -- Buffer navigation
 map("n", "<TAB>", ":bnext<CR>")
 map("n", "<S-TAB>", ":bprevious<CR>")
--- map("n", "<leader>gs", ":Git<CR>");

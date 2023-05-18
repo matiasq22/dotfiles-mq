@@ -21,6 +21,9 @@ require("lazy").setup {
     fallback = true,
     patterns = { "mq" },
   },
+  ui = {
+    border = "rounded",
+  },
   performance = {
     rtp = {
       disabled_plugins = {

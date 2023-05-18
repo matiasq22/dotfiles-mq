@@ -26,7 +26,7 @@ local map_tele = function(key, f, opts)
   vim.keymap.set(opts.mode, key, rhs, map_options)
 end
 
--- not shure what this line does
+-- not sure what this line does
 vim.api.nvim_set_keymap("c", "<c-r><c-r>", "<Plug>(TelescopeFuzzyCommandSearch)", { noremap = false, nowait = true })
 
 map_tele("<leader>pp", "project_files", { desc = "Open Project files" })
@@ -42,7 +42,7 @@ map_tele("<leader>pe", "buffers", { desc = "Open buffers" })
 map_tele("<leader>pr", "treesitter", { desc = "Treesitter buffer elements" })
 map_tele("<leader>bb", "file_browser_relative", { desc = "Current directory" })
 map_tele("<leader>bp", "file_browser", { desc = "Project directory" })
-map_tele("<leader>gs", "git_status", { desc = "Git status" })
+-- map_tele("<leader>gs", "git_status", { desc = "Git status" })
 map_tele("<leader>ve", "diagnostics", { desc = "Diagnostic of the buffer" })
 map_tele("<leader>po", "api_specs", { desc = "Openapi directory" })
 map_tele("<leader>pm", "gateway", { desc = "Graphql mutations and queries" })

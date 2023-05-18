@@ -11,5 +11,4 @@ for server, setup in pairs(servers) do
     lspconfig[server].setup(setup())
 end
 
--- require "mq.lsp.null-ls"
 require "mq.lsp.null-ls"
