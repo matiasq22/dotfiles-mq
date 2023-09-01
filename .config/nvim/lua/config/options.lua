@@ -3,7 +3,7 @@ vim.g.snippets = "luasnip"
 
 local opt = vim.o
 
-opt.mouse = false
+--opt.mouse = false
 opt.number = true
 opt.relativenumber = true
 opt.conceallevel = 3

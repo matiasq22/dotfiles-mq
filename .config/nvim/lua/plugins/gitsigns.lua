@@ -1,10 +1,10 @@
 return {
   "lewis6991/gitsigns.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
+  -- dependencies = {
+  --   "nvim-lua/plenary.nvim",
+  -- },
   config = function()
-    local gitsigns = require "gitsigns"
+    local gitsigns = require 'gitsigns'
     gitsigns.setup {
       signcolumn = false,
       numhl = true,

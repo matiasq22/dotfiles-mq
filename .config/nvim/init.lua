@@ -1,2 +1,2 @@
-require("config")
-require("mq.globals")
+require "config"
+require "mq.globals"
