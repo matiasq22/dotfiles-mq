@@ -1,130 +1,130 @@
-local lsp_attach = require "mq.lsp.attach"
+local lsp_attach = require("mq.lsp.attach")
 
 local lsp_flags = {
-  debounce_text_changes = 150,
+	debounce_text_changes = 150,
 }
 
 local default = function()
-  return {
-    on_attach = lsp_attach,
-    flags = lsp_flags,
-  }
+	return {
+		on_attach = lsp_attach,
+		flags = lsp_flags,
+	}
 end
 
 return {
-  ["emmet_ls"] = function()
-    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+	["emmet_ls"] = function()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-    return {
-      on_attach = lsp_attach,
-      flags = lsp_flags,
-      capabilities = capabilities,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "blade", "vue" },
-    }
-  end,
-  ["gopls"] = function()
-    return {
-      on_attach = lsp_attach,
-      flags = lsp_flags,
-    }
-  end,
-  ["html"] = default,
-  ["jsonls"] = default,
-  ["lua_ls"] = function()
-    return {
-      on_attach = lsp_attach,
-      flags = lsp_flags,
-      settings = {
-        Lua = {
-          runtime = {
-            version = "LuaJIT",
-          },
-          diagnostics = {
-            globals = { "vim" },
-          },
-          workspace = {
-            library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false,
-          },
-          telemetry = {
-            enable = false,
-          },
-          hint = {
-            enable = true,
-          }
-        },
-      },
-    }
-  end,
-  ["marksman"] = default,
-  -- ["nil_ls"] = default,
-  ["phpactor"] = function()
-    return {
-      on_attach = lsp_attach,
-      flags = lsp_flags,
-      filetypes = { "php", "cucumber" },
-    }
-  end,
-  ["rust_analyzer"] = function()
-    return {
-      on_attach = lsp_attach,
-      flags = lsp_flags,
-      settings = {
-        ["rust-analyzer"] = {
-          checkOnSave = {
-            allFeatures = true,
-            overrideCommand = {
-              "cargo",
-              "clippy",
-              "--workspace",
-              "--message-format=json",
-              "--all-targets",
-              "--all-features",
-            },
-          },
-        },
-      },
-    }
-  end,
-  ["svelte"] = default,
-  ["tailwindcss"] = function()
-    return {
-      on_attach = lsp_attach,
-      flags = lsp_flags,
-      filetypes = { "blade", "html", "svelte" },
-    }
-  end,
-  ["tsserver"] = function()
-    -- return {
-    --   init_options = require("nvim-lsp-ts-utils").init_options,
-    --   on_attach = lsp_attach,
-    --   flags = lsp_flags,
-    --   settings = {
-    --     typescript = {
-    --       inlayHints = {
-    --         includeInlayParameterNameHints = "all",
-    --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-    --         includeInlayFunctionParameterTypeHints = true,
-    --         includeInlayVariableTypeHints = true,
-    --         includeInlayPropertyDeclarationTypeHints = true,
-    --         includeInlayFunctionLikeReturnTypeHints = true,
-    --         includeInlayEnumMemberValueHints = true,
-    --       },
-    --     },
-    --     javascript = {
-    --       inlayHints = {
-    --         includeInlayParameterNameHints = "all",
-    --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-    --         includeInlayFunctionParameterTypeHints = true,
-    --         includeInlayVariableTypeHints = true,
-    --         includeInlayPropertyDeclarationTypeHints = true,
-    --         includeInlayFunctionLikeReturnTypeHints = true,
-    --         includeInlayEnumMemberValueHints = true,
-    --       },
-    --     },
-    --   },
-    -- }
-    return {
+		return {
+			on_attach = lsp_attach,
+			flags = lsp_flags,
+			capabilities = capabilities,
+			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "blade", "vue" },
+		}
+	end,
+	["gopls"] = function()
+		return {
+			on_attach = lsp_attach,
+			flags = lsp_flags,
+		}
+	end,
+	["html"] = default,
+	["jsonls"] = default,
+	["lua_ls"] = function()
+		return {
+			on_attach = lsp_attach,
+			flags = lsp_flags,
+			settings = {
+				Lua = {
+					runtime = {
+						version = "LuaJIT",
+					},
+					diagnostics = {
+						globals = { "vim" },
+					},
+					workspace = {
+						library = vim.api.nvim_get_runtime_file("", true),
+						checkThirdParty = false,
+					},
+					telemetry = {
+						enable = false,
+					},
+					hint = {
+						enable = true,
+					},
+				},
+			},
+		}
+	end,
+	["marksman"] = default,
+	-- ["nil_ls"] = default,
+	["phpactor"] = function()
+		return {
+			on_attach = lsp_attach,
+			flags = lsp_flags,
+			filetypes = { "php", "cucumber" },
+		}
+	end,
+	["rust_analyzer"] = function()
+		return {
+			on_attach = lsp_attach,
+			flags = lsp_flags,
+			settings = {
+				["rust-analyzer"] = {
+					checkOnSave = {
+						allFeatures = true,
+						overrideCommand = {
+							"cargo",
+							"clippy",
+							"--workspace",
+							"--message-format=json",
+							"--all-targets",
+							"--all-features",
+						},
+					},
+				},
+			},
+		}
+	end,
+	["svelte"] = default,
+	["tailwindcss"] = function()
+		return {
+			on_attach = lsp_attach,
+			flags = lsp_flags,
+			filetypes = { "blade", "html", "svelte" },
+		}
+	end,
+	["tsserver"] = function()
+		-- return {
+		--   init_options = require("nvim-lsp-ts-utils").init_options,
+		--   on_attach = lsp_attach,
+		--   flags = lsp_flags,
+		--   settings = {
+		--     typescript = {
+		--       inlayHints = {
+		--         includeInlayParameterNameHints = "all",
+		--         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+		--         includeInlayFunctionParameterTypeHints = true,
+		--         includeInlayVariableTypeHints = true,
+		--         includeInlayPropertyDeclarationTypeHints = true,
+		--         includeInlayFunctionLikeReturnTypeHints = true,
+		--         includeInlayEnumMemberValueHints = true,
+		--       },
+		--     },
+		--     javascript = {
+		--       inlayHints = {
+		--         includeInlayParameterNameHints = "all",
+		--         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+		--         includeInlayFunctionParameterTypeHints = true,
+		--         includeInlayVariableTypeHints = true,
+		--         includeInlayPropertyDeclarationTypeHints = true,
+		--         includeInlayFunctionLikeReturnTypeHints = true,
+		--         includeInlayEnumMemberValueHints = true,
+		--       },
+		--     },
+		--   },
+		-- }
+		return {
 			-- Needed for inlayHints. Merge this table with your settings or copy
 			-- it from the source if you want to add your own init_options.
 			init_options = require("nvim-lsp-ts-utils").init_options,
@@ -175,7 +175,7 @@ return {
 					},
 
 					-- update imports on file move
-					update_imports_on_move = false,
+					update_imports_on_move = true,
 					require_confirmation_on_move = false,
 					watch_dir = nil,
 				})
@@ -189,7 +189,10 @@ return {
 				vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
 				vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
 			end,
+			filetypes = { "javascriptreact", "typescriptreact", "javascript", "typescript" },
 		}
-  end,
-  ["volar"] = default,
+	end,
+	["volar"] = default,
+	["astro"] = default,
+	["jdtls"] = default,
 }

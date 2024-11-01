@@ -26,6 +26,7 @@ alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
 alias k=kubectl
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+alias ls=exa
 
 #k3d completions
 source /home/mq/.k3d-completion.fish

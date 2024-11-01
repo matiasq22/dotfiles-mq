@@ -7,6 +7,7 @@ return {
     { "kyazdani42/nvim-web-devicons" },
     { "nvim-telescope/telescope-file-browser.nvim" },
     { "nvim-telescope/telescope-ui-select.nvim" },
+    { "xiyaowong/telescope-emoji.nvim" },
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",

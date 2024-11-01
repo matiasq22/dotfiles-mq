@@ -19,6 +19,9 @@ map("n", "<leader>cc", ":cclose<CR>", { desc = "Close the quick fix list" })
 map("v", "<", "<gv", { desc = "Indent out and keeps the selection" })
 map("v", ">", ">gv", { desc = "Indent in and keeps the selection" })
 
+-- new tab
+map("n", "te", "tabedit", {noremap = true, silent = true})
+
 -- symbols to add undo points
 local symbols = { ",", ".", "!", "?", "$", ">", "<" }
 for _, symbol in pairs(symbols) do
